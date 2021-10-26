@@ -63,18 +63,18 @@ app.get('/pure/counter', (req, res) => {
 
 app.post('/proper/counter', (req, res) => {
 
-    var name = req.body.name ? req.body.name : "";
+    var token = req.body.token ? req.body.token : "";
 
-    if (name.length < 10) {
+    if (token.length < 10) {
         res.json({
             code: 200,
-            message: 'should be valided name',
+            message: 'should be valided token',
             data: req.body
         });
         return
     }
 
-    var path = './token/' + name;
+    var path = './token/' + token;
 
     fs.readFile(path, function (error, data) {
         if (error) {
